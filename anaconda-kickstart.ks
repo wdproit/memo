@@ -23,7 +23,7 @@ logvol swap --fstype="swap" --size=8192 --name=swap --vgname=vg_openvzwdpro
 
 logvol /vz --fstype="ext4" --size=1000 --grow --name=vz --vgname=vg_openvzwdpro --fsoptions="defaults,noatime"
 
-bootloader --location=efi --boot-drive=nvme0n1
+bootloader --location=partition --boot-drive=nvme0n1
 
 eula --agreed
 reboot
