@@ -6,8 +6,8 @@ ignoredisk --only-use=nvme0n1,nvme1n1
 zerombr
 clearpart --all --initlabel
 
-part biosboot --fstype="biosboot" --size=1 --ondisk=nvme0n1
-part biosboot --fstype="biosboot" --size=1 --ondisk=nvme1n1
+part efi01 --fstype="efi" --size=500 --ondisk=nvme0n1
+part efi02 --fstype="efi" --size=500 --ondisk=nvme1n1
 
 part raid.01 --size=1024 --ondisk=nvme0n1
 part raid.02 --size=1024 --ondisk=nvme1n1
@@ -24,6 +24,7 @@ logvol swap --fstype="swap" --size=8192 --name=swap --vgname=vg_openvzwdpro
 
 logvol /vz --fstype="ext4" --size=1000 --grow --name=vz --vgname=vg_openvzwdpro --fsoptions="defaults,noatime"
 
-bootloader --location=mbr
+bootloader --location=mbr --boot-drive=nvme0n1
+
 eula --agreed
 reboot
