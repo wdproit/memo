@@ -6,8 +6,7 @@ ignoredisk --only-use=nvme0n1,nvme1n1
 zerombr
 clearpart --all --initlabel
 
-part efi01 --fstype="efi" --size=500 --ondisk=nvme0n1
-part efi02 --fstype="efi" --size=500 --ondisk=nvme1n1
+part /boot/efi --fstype="efi" --size=500 --ondisk=nvme0n1
 
 part raid.01 --size=1024 --ondisk=nvme0n1
 part raid.02 --size=1024 --ondisk=nvme1n1
